@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for pupils in pupils %}
+
+    <p>{{ pupils.id }}</p>
+
+    {% endfor %}
+{% endblock %}
