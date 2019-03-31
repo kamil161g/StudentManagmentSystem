@@ -4,7 +4,6 @@
 namespace App\Tests\Controller;
 
 
-use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

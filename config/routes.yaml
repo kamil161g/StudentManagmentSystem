@@ -5,3 +5,7 @@ index:
 registration:
     path: /registration
     controller: App\Controller\RegistrationController:register
+
+forgot_password:
+    path: /forgotpassword
+    controller: App\Controller\ForgotPasswordController:sendEmailWithChangePassword
