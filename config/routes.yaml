@@ -6,6 +6,13 @@ registration:
     path: /registration
     controller: App\Controller\RegistrationController:register
 
+
+#PASSWORD-------------------------------------------------------------------------------------------------
+
 forgot_password:
     path: /forgotpassword
     controller: App\Controller\ForgotPasswordController:sendEmailWithChangePassword
+
+change_password_if_you_forgot:
+    path: /changepasswordifyouforgot/{user}
+    controller: App\Controller\ChangePasswordIfYouForgotController:changePassword

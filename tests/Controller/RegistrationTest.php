@@ -33,9 +33,6 @@ class RegistrationTest extends WebTestCase
 
     public function testShouldCheckIfYouAddedNewUser()
     {
-
-
-
         $crawler = $this->client->request('GET', '/registration');
 
 

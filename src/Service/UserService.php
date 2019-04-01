@@ -43,4 +43,20 @@ class UserService
         $hashPassword = $this->passwordEncoder->encodePassword($user, $password);
         $this->repository->getRepository(User::class)->insertUser($user, $hashPassword);
     }
+
+    /**
+     * @param User $user
+     * @param string $password1
+     * @param string $password2
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function changePasswordIfYouForgot(User $user, string $password1, string $password2)
+    {
+        if($password1 === $password2){
+            $hashPassword = $this->passwordEncoder->encodePassword($user, $password1);
+            $this->repository->getRepository(User::class)->insertUser($user, $hashPassword);
+        }
+
+    }
 }

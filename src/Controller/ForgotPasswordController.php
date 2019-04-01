@@ -23,21 +23,32 @@ class ForgotPasswordController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
 
-                $message = (new \Swift_Message('Hello Email'))
-                    ->setFrom('kamilgasior07test@gmail.com')
-                    ->setTo($form->get('email')->getViewData())
-                    ->setBody(
-                        $this->renderView(
-                            'emails/changePassword.html.twig'
-                        ),
-                        'text/html'
-                    );
+                if($this->getDoctrine()->getRepository(User::class)->findOneBy([
+                    'email' => $form->get('email')->getViewData()
+                ]
+                )){
 
-                $mailer->send($message);
+                    $message = (new \Swift_Message('Hello Email'))
+                        ->setFrom('kamilgasior07test@gmail.com')
+                        ->setTo($form->get('email')->getViewData())
+                        ->setBody(
+                            $this->renderView(
+                                'emails/changePassword.html.twig'
+                            ),
+                            'text/html'
+                        );
 
-                $this->addFlash('success', 'Email został wysłany');
+                    $mailer->send($message);
 
-                return $this->redirectToRoute('index');
+                    $this->addFlash('success', 'Email został wysłany');
+
+                    return $this->redirectToRoute('index');
+                }else{
+                    $this->addFlash('error', 'Konto z tym emailem nie istnieje');
+
+                }
+
+
             }
 
 

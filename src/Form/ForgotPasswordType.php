@@ -30,7 +30,7 @@ class ForgotPasswordType extends AbstractType
                     new NotBlank([
                         'message' => 'Podaj email.'
                     ])
-                ]
+                ], 'mapped' => false
             ])
             ->add('submit', SubmitType::class, ['label' => 'Wyślij']);
     }
