@@ -6,6 +6,9 @@ registration:
     path: /registration
     controller: App\Controller\RegistrationController:register
 
+logout:
+    path: /logout
+
 
 #PASSWORD-------------------------------------------------------------------------------------------------
 
@@ -16,3 +19,13 @@ forgot_password:
 change_password_if_you_forgot:
     path: /changepasswordifyouforgot/{user}
     controller: App\Controller\ChangePasswordIfYouForgotController:changePassword
+
+#PROFILE-------------------------------------------------------------------------------------------------
+
+change_avatar:
+    path: /profile/changeavatar/{user}
+    controller: App\Controller\ChangeAvatarController:changeAvatar
+
+profile:
+    path: /profile/{user}
+    controller: App\Controller\ProfileUserController:viewUserProfile

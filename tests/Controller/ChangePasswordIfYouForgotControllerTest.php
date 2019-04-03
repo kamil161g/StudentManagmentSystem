@@ -25,6 +25,8 @@ class ChangePasswordIfYouForgotControllerTest extends WebTestCase
 
     public function testShouldIfYouCanSetNewPassword()
     {
+
+
         $user = new User();
         $user->setEmail('test1@test.pl');
         $user->setPassword('test123');

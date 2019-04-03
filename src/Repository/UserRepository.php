@@ -33,4 +33,11 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
 
     }
+
+    public function updateAvatar(User $user)
+    {
+        $this->_em->persist($user);
+        $this->_em->flush();
+
+    }
 }

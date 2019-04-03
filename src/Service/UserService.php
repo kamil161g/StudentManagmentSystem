@@ -6,7 +6,9 @@ namespace App\Service;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 
 class UserService
 {
@@ -21,11 +23,18 @@ class UserService
     private $repository;
 
     /**
+     * @var object|string
+     */
+    private $user;
+
+    /**
      * UserService constructor.
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @param EntityManagerInterface $repository
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $repository)
+    public function __construct(
+        UserPasswordEncoderInterface $passwordEncoder,
+        EntityManagerInterface $repository)
     {
 
         $this->passwordEncoder = $passwordEncoder;
@@ -58,5 +67,13 @@ class UserService
             $this->repository->getRepository(User::class)->insertUser($user, $hashPassword);
         }
 
+    }
+
+    /**
+     * @param User $user
+     */
+    public function changeAvatar(User $user)
+    {
+        $this->repository->getRepository(User::class)->updateAvatar($user);
     }
 }
