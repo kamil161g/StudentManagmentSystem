@@ -34,8 +34,27 @@ class UserRepository extends ServiceEntityRepository
 
     }
 
+    /**
+     * @param User $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function updateAvatar(User $user)
     {
+        $this->_em->persist($user);
+        $this->_em->flush();
+
+    }
+
+    /**
+     * @param User $user
+     * @param string $password
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updatePassword(User $user, string $password)
+    {
+        $user->setPassword($password);
         $this->_em->persist($user);
         $this->_em->flush();
 

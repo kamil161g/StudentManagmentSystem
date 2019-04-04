@@ -20,6 +20,10 @@ change_password_if_you_forgot:
     path: /changepasswordifyouforgot/{user}
     controller: App\Controller\ChangePasswordIfYouForgotController:changePassword
 
+change_password:
+    path: /profile/changepassword
+    controller: App\Controller\ChangePasswordController:changePassword
+
 #PROFILE-------------------------------------------------------------------------------------------------
 
 change_avatar:

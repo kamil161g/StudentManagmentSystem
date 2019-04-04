@@ -71,9 +71,30 @@ class UserService
 
     /**
      * @param User $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function changeAvatar(User $user)
     {
         $this->repository->getRepository(User::class)->updateAvatar($user);
+    }
+
+    /**
+     * @param User $user
+     * @param string $newPassword1
+     * @param string $newPassword2
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function changePassword(
+        User $user,
+        string $newPassword1,
+        string $newPassword2
+    )
+    {
+        if($newPassword1 === $newPassword2){
+            $hashPassword = $this->passwordEncoder->encodePassword($user, $newPassword1);
+            $this->repository->getRepository(User::class)->updatePassword($user, $hashPassword);
+        }
     }
 }
