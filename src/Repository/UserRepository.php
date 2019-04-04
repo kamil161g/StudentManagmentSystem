@@ -59,4 +59,18 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
 
     }
+
+    /**
+     * @param User $user
+     * @param string $email
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updateEmail(User $user, string $email)
+    {
+        $user->setEmail($email);
+        $this->_em->persist($user);
+        $this->_em->flush();
+
+    }
 }

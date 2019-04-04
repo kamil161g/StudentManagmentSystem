@@ -23,6 +23,7 @@ class ChangePasswordIfYouForgotControllerTest extends WebTestCase
         $this->em->beginTransaction();
     }
 
+
     public function testShouldIfYouCanSetNewPassword()
     {
 

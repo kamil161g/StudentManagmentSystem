@@ -97,4 +97,18 @@ class UserService
             $this->repository->getRepository(User::class)->updatePassword($user, $hashPassword);
         }
     }
+
+    /**
+     * @param User $user
+     * @param string $oldEmail
+     * @param string $newEmail
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function changeEmail(User $user, string $oldEmail, string $newEmail)
+    {
+        if($oldEmail !== $newEmail){
+            $this->repository->getRepository(User::class)->updateEmail($user, $newEmail);
+        }
+    }
 }

@@ -24,6 +24,15 @@ change_password:
     path: /profile/changepassword
     controller: App\Controller\ChangePasswordController:changePassword
 
+
+
+#EMAIL-------------------------------------------------------------------------------------------------
+
+change_email:
+    path: /profile/changemail
+    controller: App\Controller\ChangeEmailController:changeEmail
+
+
 #PROFILE-------------------------------------------------------------------------------------------------
 
 change_avatar:
