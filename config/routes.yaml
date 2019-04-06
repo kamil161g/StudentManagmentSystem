@@ -42,3 +42,9 @@ change_avatar:
 profile:
     path: /profile/{user}
     controller: App\Controller\ProfileUserController:viewUserProfile
+
+#MODULE-------------------------------------------------------------------------------------------------
+
+add_new_module:
+    path: /addnewmodule
+    controller: App\Controller\AddNewModuleController:addModule

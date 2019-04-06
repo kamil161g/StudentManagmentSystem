@@ -33,6 +33,7 @@ class ChangeEmailControllerTest extends WebTestCase
         $this->user = new User();
         $this->user->setEmail('test123@test.pl');//password is test123
         $this->user->setPassword(password_hash('test123', PASSWORD_ARGON2I));
+        $this->user->setRoles(['ROLE_TEACHER']);
         $this->em->persist($this->user);
         $this->em->flush();
 
