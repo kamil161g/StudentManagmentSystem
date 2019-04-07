@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for user in user %}
+
+        <a href="{{ path('profile', {'user': user.user.id}) }}">{{ user.user.email }}</a>
+
+    {% endfor %}
+
+{% endblock %}
+

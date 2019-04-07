@@ -35,4 +35,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/profile/changemail, roles: [ROLE_TEACHER, ROLE_ADMIN] }
+        - { path: ^/addnewmodule, roles: [ROLE_TEACHER, ROLE_ADMIN] }
+        - { path: ^/whobserve, roles: [ROLE_TEACHER, ROLE_ADMIN] }
         # - { path: ^/profile, roles: ROLE_USER }

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes("success") %}
+        <div class="message">{{ message }}</div>
+    {% endfor %}
+
+
+    {% for message in app.flashes("error") %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endfor %}
+        <a href="{{ path('remove_module', {'module': module.id}) }}">Usuń moduł</a>
+
+    <a href = {{ path('observe_module', {'module': module.id, 'user': app.user.id}) }}>Obserwuj moduł</a>
+    <p>{{ module.title }}</p>
+    <p>{{ module.text }}</p>
+
+
+    {{ form_start(form) }}
+        {{ form_row(form.text) }}
+        {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+
+
+    <h1>Komentarze</h1>
+
+    {% for comment in comment %}
+
+    {{ comment.text }}
+        <p>Autor : {{ comment.author.email }}  </p>
+        <p>Data wstawienia: {{ comment.createdAt|date("m/d/Y H:i:s") }}</p>
+        {% if is_granted('ROLE_TEACHER') or is_granted('ROLE_TEACHER') or comment.author.id == app.user.id  %}
+        <a href="{{ path('edit_comment', {'comment': comment.id, 'module': module.id}) }}">Edytuj komentarz</a>
+        <a href="{{ path('remove_comment', {'comment': comment.id, 'module': module.id}) }}">Usuń komentarz</a>
+        {% endif %}
+    {% endfor  %}
+
+{% endblock %}
+

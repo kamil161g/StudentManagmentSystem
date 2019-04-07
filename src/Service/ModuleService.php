@@ -34,4 +34,15 @@ class ModuleService
             $text
         );
     }
+
+    /**
+     * @param Module $module
+     * @param User $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insertObserver(Module $module, User $user)
+    {
+        $this->repository->getRepository(Module::class)->addObserver($module, $user);
+    }
 }

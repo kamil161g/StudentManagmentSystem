@@ -48,3 +48,28 @@ profile:
 add_new_module:
     path: /addnewmodule
     controller: App\Controller\AddNewModuleController:addModule
+
+view_module:
+    path: /module/{module}
+    controller: App\Controller\ViewModuleController:viewModule
+
+observe_module:
+    path: /observemodule/{module}/{user}
+    controller: App\Controller\ObserveModuleController:observeModule
+
+who_observe:
+    path: /whobserve/{module}
+    controller: App\Controller\ShowWhoObserveModulesController:showWhoObserveThisModule
+
+remove_module:
+    path: /removemodule/{module}
+    controller: App\Controller\ViewModuleController:removeModule
+#COMMENT-------------------------------------------------------------------------------------------------
+
+edit_comment:
+    path: /editcomment/{module}/{comment}
+    controller: App\Controller\CommentController:editComment
+
+remove_comment:
+    path: /removecomment/{module}/{comment}
+    controller: App\Controller\CommentController:removeComment

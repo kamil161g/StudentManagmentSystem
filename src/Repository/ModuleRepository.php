@@ -30,11 +30,33 @@ class ModuleRepository extends ServiceEntityRepository
      */
     public function addNewModule(Module $module, User $user, string $title, string $text)
     {
-        $this->_em;
         $module->setAuthor($user);
         $module->setTitle($title);
         $module->setText($text);
         $this->_em->persist($module);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param Module $module
+     * @param User $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addObserver(Module $module, User $user)
+    {
+        $this->_em->persist($module);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param Module $module
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function removeModule(Module $module)
+    {
+        $this->_em->remove($module);
         $this->_em->flush();
     }
 }
