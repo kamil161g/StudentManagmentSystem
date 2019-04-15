@@ -3,13 +3,10 @@
 /.env.local
 /.env.local.php
 /.env.*.local
-/public/bundles/
+/public/
+/.idea/
 /var/
 /vendor/
-/.idea
-/idea
-.idea
-/public
 ###< symfony/framework-bundle ###
 
 ###> symfony/web-server-bundle ###
